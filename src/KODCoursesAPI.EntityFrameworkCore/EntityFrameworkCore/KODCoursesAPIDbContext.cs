@@ -101,6 +101,7 @@ public class KODCoursesAPIDbContext :
             c.Property(c => c.Name).HasMaxLength(64);
             c.Property(c => c.Description).HasMaxLength(128);
             c.Property(c => c.Lessons).HasMaxLength(128);
+            c.Property(c => c.TotalDurationMinutes);
         });
 
         builder.Entity<Lesson>(l =>
@@ -111,6 +112,7 @@ public class KODCoursesAPIDbContext :
             l.Property(c => c.Title).HasMaxLength(64);
             l.Property(c => c.Description).HasMaxLength(128);
             l.Property(c => c.Tags).HasMaxLength(16);
+            l.Property(c => c.DurationMinutes);
         });
 
         builder.Entity<Tag>(t =>
