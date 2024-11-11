@@ -1,6 +1,7 @@
+using KODCoursesAPI.Books;
+using KODCoursesAPI.Entities;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using KODCoursesAPI.Books;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -10,12 +11,11 @@ using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
+using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
-using KODCoursesAPI.Entities;
 
 namespace KODCoursesAPI.EntityFrameworkCore;
 
@@ -84,7 +84,7 @@ public class KODCoursesAPIDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
-        
+
         builder.Entity<Book>(b =>
         {
             b.ToTable(KODCoursesAPIConsts.DbTablePrefix + "Books",
@@ -100,7 +100,7 @@ public class KODCoursesAPIDbContext :
             c.ConfigureByConvention();
             c.Property(c => c.Name).HasMaxLength(64);
             c.Property(c => c.Description).HasMaxLength(128);
-            c.Property(c => c.Lessons).HasMaxLength(128);
+            // c.Property(c => c.Lessons).HasMaxLength(128);
             c.Property(c => c.TotalDurationMinutes);
         });
 
@@ -111,7 +111,7 @@ public class KODCoursesAPIDbContext :
             l.ConfigureByConvention();
             l.Property(c => c.Title).HasMaxLength(64);
             l.Property(c => c.Description).HasMaxLength(128);
-            l.Property(c => c.Tags).HasMaxLength(16);
+            // l.Property(c => c.Tags).HasMaxLength(16);
             l.Property(c => c.DurationMinutes);
         });
 
@@ -123,7 +123,20 @@ public class KODCoursesAPIDbContext :
             t.Property(c => c.Name).HasMaxLength(16);
             t.Property(c => c.Description).HasMaxLength(128);
         });
-        
+
+
+        builder.Entity<Course>()
+            .HasMany(c => c.Lessons)
+            .WithOne(l => l.Course);
+
+        builder.Entity<Lesson>()
+            .HasMany(l => l.Tags)
+            .WithMany(t => t.Lessons);
+
+        builder.Entity<Tag>()
+            .HasMany(t => t.Lessons)
+            .WithMany(l => l.Tags);
+
         /* Configure your own tables/entities inside here */
 
         //builder.Entity<YourEntity>(b =>
