@@ -1,0 +1,89 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.BasicTheme": {
+      "version": "8.3.3",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "8.3.3",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "8.3.3",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "8.3.3",
+      "isInstalled": true
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "8.3.3",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "KODCoursesAPI.Application": {
+      "path": "src/KODCoursesAPI.Application/KODCoursesAPI.Application.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.Application.Tests": {
+      "path": "test/KODCoursesAPI.Application.Tests/KODCoursesAPI.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "KODCoursesAPI.Domain.Shared": {
+      "path": "src/KODCoursesAPI.Domain.Shared/KODCoursesAPI.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.Application.Contracts": {
+      "path": "src/KODCoursesAPI.Application.Contracts/KODCoursesAPI.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.HttpApi": {
+      "path": "src/KODCoursesAPI.HttpApi/KODCoursesAPI.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.HttpApi.Client": {
+      "path": "src/KODCoursesAPI.HttpApi.Client/KODCoursesAPI.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.EntityFrameworkCore.Tests": {
+      "path": "test/KODCoursesAPI.EntityFrameworkCore.Tests/KODCoursesAPI.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "KODCoursesAPI.EntityFrameworkCore": {
+      "path": "src/KODCoursesAPI.EntityFrameworkCore/KODCoursesAPI.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.TestBase": {
+      "path": "test/KODCoursesAPI.TestBase/KODCoursesAPI.TestBase.abppkg",
+      "folder": "test"
+    },
+    "KODCoursesAPI.Domain.Tests": {
+      "path": "test/KODCoursesAPI.Domain.Tests/KODCoursesAPI.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "KODCoursesAPI.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/KODCoursesAPI.HttpApi.Client.ConsoleTestApp/KODCoursesAPI.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "KODCoursesAPI.DbMigrator": {
+      "path": "src/KODCoursesAPI.DbMigrator/KODCoursesAPI.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.HttpApi.Host": {
+      "path": "src/KODCoursesAPI.HttpApi.Host/KODCoursesAPI.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "KODCoursesAPI.Domain": {
+      "path": "src/KODCoursesAPI.Domain/KODCoursesAPI.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

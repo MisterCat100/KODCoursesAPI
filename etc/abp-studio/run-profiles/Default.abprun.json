@@ -1,0 +1,13 @@
+﻿{
+  "applications": {
+    "KODCoursesAPI.HttpApi.Host": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44334",
+      "path": "../../../src/KODCoursesAPI.HttpApi.Host/KODCoursesAPI.HttpApi.Host.csproj",
+      "kubernetesService": ".*-httpapihost$",
+      "execution": {
+        "order": 4
+      }
+    }
+  }
+}
