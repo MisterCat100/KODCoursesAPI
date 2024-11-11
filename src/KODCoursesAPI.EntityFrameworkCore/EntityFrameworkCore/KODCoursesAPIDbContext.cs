@@ -15,6 +15,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using KODCoursesAPI.Entities;
 
 namespace KODCoursesAPI.EntityFrameworkCore;
 
@@ -29,6 +30,9 @@ public class KODCoursesAPIDbContext :
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
 
     public DbSet<Book> Books { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<Lesson> Lessons { get; set; }
+    public DbSet<Tag> Tags { get; set; }
 
     #region Entities from the modules
 
@@ -87,6 +91,35 @@ public class KODCoursesAPIDbContext :
                 KODCoursesAPIConsts.DbSchema);
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+        });
+
+        builder.Entity<Course>(c =>
+        {
+            c.ToTable(KODCoursesAPIConsts.DbTablePrefix + "Courses",
+                KODCoursesAPIConsts.DbSchema);
+            c.ConfigureByConvention();
+            c.Property(c => c.Name).HasMaxLength(64);
+            c.Property(c => c.Description).HasMaxLength(128);
+            c.Property(c => c.Lessons).HasMaxLength(128);
+        });
+
+        builder.Entity<Lesson>(l =>
+        {
+            l.ToTable(KODCoursesAPIConsts.DbTablePrefix + "Lessons",
+                KODCoursesAPIConsts.DbSchema);
+            l.ConfigureByConvention();
+            l.Property(c => c.Title).HasMaxLength(64);
+            l.Property(c => c.Description).HasMaxLength(128);
+            l.Property(c => c.Tags).HasMaxLength(16);
+        });
+
+        builder.Entity<Tag>(t =>
+        {
+            t.ToTable(KODCoursesAPIConsts.DbTablePrefix + "Tags",
+                KODCoursesAPIConsts.DbSchema);
+            t.ConfigureByConvention();
+            t.Property(c => c.Name).HasMaxLength(16);
+            t.Property(c => c.Description).HasMaxLength(128);
         });
         
         /* Configure your own tables/entities inside here */
