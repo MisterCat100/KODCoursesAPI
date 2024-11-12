@@ -7,9 +7,9 @@ public class Lesson : Entity<Guid>
 {
     public required string Title { get; set; }
     public required string Description { get; set; }
-    public required List<Tag> Tags { get; set; }
+    public List<Tag> Tags { get; set; } = [];
     public int DurationMinutes { get; set; }
-    public Course Course { get; set; }
+    public Course? Course { get; set; }
 
     protected Lesson()
     {
