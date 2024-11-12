@@ -3,6 +3,7 @@ using System;
 using KODCoursesAPI.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace KODCoursesAPI.Migrations
 {
     [DbContext(typeof(KODCoursesAPIDbContext))]
-    partial class KODCoursesAPIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241112015318_Change_Some_Properties_To_Nullable_Or_With_Initialization")]
+    partial class Change_Some_Properties_To_Nullable_Or_With_Initialization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
