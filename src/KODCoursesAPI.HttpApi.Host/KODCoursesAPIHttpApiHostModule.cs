@@ -39,6 +39,8 @@ using Volo.Abp.OpenIddict;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Security.Claims;
+using Volo.Abp.Caching.StackExchangeRedis;
+using Volo.Abp.Caching;
 
 namespace KODCoursesAPI;
 
@@ -54,7 +56,9 @@ namespace KODCoursesAPI;
     typeof(AbpSwashbuckleModule),
     typeof(AbpAspNetCoreSerilogModule)
     )]
-public class KODCoursesAPIHttpApiHostModule : AbpModule
+[DependsOn(typeof(AbpCachingStackExchangeRedisModule))]
+    [DependsOn(typeof(AbpCachingModule))]
+    public class KODCoursesAPIHttpApiHostModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {
