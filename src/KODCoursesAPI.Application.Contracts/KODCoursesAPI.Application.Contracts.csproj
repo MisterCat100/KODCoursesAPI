@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KODCoursesAPI.Domain.Shared\KODCoursesAPI.Domain.Shared.csproj" />
+    <ProjectReference Include="..\KODCoursesAPI.Domain\KODCoursesAPI.Domain.csproj" />
   </ItemGroup>
   
   <ItemGroup>
